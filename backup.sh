@@ -16,7 +16,7 @@ DEST_DIR=$DEST_DIR/`whoami`-`hostname`-backup-`date +%Y-%m-%d_%H-%M-%S`
 
 mkdir $DEST_DIR
 sudo apt-key exportall > $DEST_DIR/Repo.keys
-sudo cp /etc/apt/sources.list $DEST_DIR/sources.list
+sudo cp -p /etc/apt/sources.list $DEST_DIR/sources.list
 dpkg --get-selections > $DEST_DIR/Package.list
 pip freeze > $DEST_DIR/requirements.txt
 rsync -a --progress --exclude=Downloads --exclude=Dropbox --exclude= /home/`whoami` $DEST_DIR
